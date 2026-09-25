@@ -3,105 +3,595 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff5f7">
 
-<title>실라에게 전하는 한마디</title>
+<title>실라에게 전하는 한마디 💌</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #fff0f5, #fffaf0);
+    overflow: hidden;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans KR",
+        sans-serif;
+
+    background:
+        radial-gradient(circle at 20% 20%, #ffe4ec 0%, transparent 35%),
+        radial-gradient(circle at 80% 80%, #fff0dc 0%, transparent 35%),
+        linear-gradient(135deg, #fff6f8, #fffaf4);
 }
+
+
+/* =========================
+   배경 장식
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -60px;
+
+    opacity: 0;
+
+    animation: floatingHeart linear infinite;
+}
+
+.heart:nth-child(1) {
+    left: 8%;
+    font-size: 20px;
+    animation-duration: 10s;
+}
+
+.heart:nth-child(2) {
+    left: 23%;
+    font-size: 15px;
+    animation-duration: 13s;
+    animation-delay: 2s;
+}
+
+.heart:nth-child(3) {
+    left: 45%;
+    font-size: 24px;
+    animation-duration: 12s;
+    animation-delay: 5s;
+}
+
+.heart:nth-child(4) {
+    left: 68%;
+    font-size: 17px;
+    animation-duration: 14s;
+    animation-delay: 1s;
+}
+
+.heart:nth-child(5) {
+    left: 86%;
+    font-size: 22px;
+    animation-duration: 11s;
+    animation-delay: 4s;
+}
+
+@keyframes floatingHeart {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.25;
+    }
+
+    80% {
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   메인 카드
+========================= */
 
 .card {
-    width: 85%;
-    max-width: 500px;
-    padding: 40px;
-    background: white;
-    border-radius: 25px;
+
+    position: relative;
+
+    width: calc(100% - 40px);
+    max-width: 520px;
+
+    padding: 48px 38px 40px;
+
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    background: rgba(255,255,255,0.88);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 25px 60px rgba(150,80,100,0.12),
+        0 5px 15px rgba(0,0,0,0.05);
+
+    animation: cardAppear 0.8s ease;
 }
 
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   꽃
+========================= */
+
+.flower {
+
+    font-size: 42px;
+
+    margin-bottom: 10px;
+
+    animation: flowerMove 3s ease-in-out infinite;
+}
+
+@keyframes flowerMove {
+
+    0%, 100% {
+        transform: rotate(-4deg);
+    }
+
+    50% {
+        transform: rotate(4deg);
+    }
+}
+
+
+/* =========================
+   제목
+========================= */
+
 h1 {
-    margin-bottom: 30px;
+
+    margin: 5px 0 8px;
+
+    font-size: 29px;
+
+    color: #3d3034;
+
+    letter-spacing: -1px;
+}
+
+.subtitle {
+
+    margin-bottom: 32px;
+
+    font-size: 14px;
+
+    color: #aa858f;
+}
+
+
+/* =========================
+   메시지
+========================= */
+
+.message-box {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 150px;
+
+    padding: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,245,247,0.95),
+            rgba(255,250,242,0.95)
+        );
+
+    border-radius: 22px;
+
+    border: 1px solid #f9e5e9;
 }
 
 #message {
-    min-height: 100px;
-    font-size: 20px;
+
+    font-size: 19px;
+
     line-height: 1.8;
+
+    color: #4d3c41;
+
+    word-break: keep-all;
 }
 
+.message-animation {
+
+    animation: messageAppear 0.5s ease;
+}
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   버튼
+========================= */
+
 button {
-    margin-top: 25px;
-    padding: 15px 25px;
+
+    margin-top: 28px;
+
+    padding: 15px 30px;
+
     border: none;
-    border-radius: 30px;
-    font-size: 17px;
+
+    border-radius: 40px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: white;
+
     cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e88fa4,
+            #d8708d
+        );
+
+    box-shadow:
+        0 8px 20px rgba(216,112,141,0.28);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(216,112,141,0.35);
+}
+
+button:active {
+
+    transform: scale(0.96);
+}
+
+
+/* =========================
+   하단
+========================= */
+
+.counter {
+
+    margin-top: 20px;
+
+    font-size: 12px;
+
+    color: #c09da6;
+}
+
+.footer {
+
+    margin-top: 22px;
+
+    font-size: 12px;
+
+    color: #c6aeb4;
+}
+
+
+/* =========================
+   모바일
+========================= */
+
+@media (max-width: 600px) {
+
+    .card {
+
+        width: calc(100% - 28px);
+
+        padding:
+            38px 22px
+            30px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    #message {
+        font-size: 17px;
+    }
+
+    .message-box {
+        min-height: 140px;
+    }
+
 }
 </style>
 </head>
 
+
 <body>
+
+
+<!-- 배경 하트 -->
+
+<div class="background">
+
+    <span class="heart">♡</span>
+    <span class="heart">♡</span>
+    <span class="heart">♡</span>
+    <span class="heart">♡</span>
+    <span class="heart">♡</span>
+
+</div>
+
+
+<!-- 메인 카드 -->
 
 <div class="card">
 
-    <h1>🌷 러블리한 실라</h1>
-
-    <div id="message">
-        버튼을 눌러보세요.
+    <div class="flower">
+        🌷
     </div>
+
+    <h1>
+        러블리한 실라
+    </h1>
+
+    <div class="subtitle">
+        오늘도 전하고 싶은 한마디
+    </div>
+
+
+    <div class="message-box">
+
+        <div id="message">
+            💌 버튼을 눌러보세요.
+        </div>
+
+    </div>
+
 
     <button onclick="showLove()">
         💌 사랑의 마음 전하기
     </button>
 
+
+    <div
+        id="counter"
+        class="counter">
+    </div>
+
+
+    <div class="footer">
+        made with ♡ for Silla
+    </div>
+
 </div>
 
+
 <script>
+
+/* =========================
+   메시지
+========================= */
+
 const messages = [
+
     "실라 참 아름다워. 웃는 모습은 더 아름다워.",
+
     "실라 처음에는 아름다운 모습이 눈에 들어왔는데, 알아갈수록 마음이 더 아름답다고 생각해.",
-    "실라와 함께 같이 걷고 이야기하는 평범한 시간이 요즘은 특별하게 느껴져.",
-    "실라처럼 매일매일 보고 싶어지는 사람은 흔하지 않아 >.<.",
+
+    "실라와 같이 걷고 이야기하는 평범한 시간이 요즘은 특별하게 느껴져.",
+
+    "실라처럼 매일매일 보고 싶어지는 사람은 흔하지 않아 >.<",
+
     "실라와 함께 있을 때 너무나도 행복하고 감사해.",
-    "실라는 너무 러블리해.",
+
+    "실라는 너무 러블리해. 🌷",
+
     "실라를 만나고 나서 평범했던 하루에 기다려지는 시간이 생겼어.",
-    "Ultimate Ture Results: 실라는 아름답다. 그리고 내일 다시 계산해도 결과는 같을 예정입니다.",
+
+    "오늘도 실라에게 좋은 일이 가득했으면 좋겠어.",
+
+    "실라와 함께 웃었던 순간들이 자꾸 생각나.",
+
+    "오늘 하루도 실라답게 예쁘게 웃는 하루가 되기를.",
+
+    "실라를 알게 된 건 요즘 내게 생긴 가장 기분 좋은 일이야.",
+
+    "다음에 실라를 만나는 날이 벌써 기다려져.",
+
+
+    /* 개발자 버전 */
+
+    "Ultimate True Result: 실라는 아름답다. 내일 다시 계산해도 결과는 같습니다. 💻",
+
     "if (silla.smile) { myDay = 'happy'; }",
+
     "while (true) { love++; }",
-    "실라의 아름다움을 계산하는 중... 오류: 측정 범위를 초과했습니다, 측정할 수 없는 아름다움.",
-    "System.out.println('오늘도 실라가 보고 싶습니다.');"
+
+    "실라의 아름다움을 계산하는 중... 오류: 측정 범위를 초과했습니다.",
+
+    "System.out.println(\"오늘도 실라가 보고 싶습니다.\");",
+
+    "SELECT happiness FROM life WHERE person = '실라'; → 100%",
+
+    "AI 분석 결과: 실라를 만날수록 호감도가 지속적으로 상승하고 있습니다.",
+
+    "404 Error: 실라보다 러블리한 사람을 찾을 수 없습니다.",
+
+    "Loading... 실라 생각 중... ██████████ 100%",
+
+    "Warning: 실라를 보고 웃는 현상이 반복적으로 발생하고 있습니다. 😊"
+
 ];
 
+
 let previous = -1;
+
+let count = 0;
+
+
+/* =========================
+   랜덤 메시지
+========================= */
 
 function showLove() {
 
     let random;
 
+
+    /* 바로 전 메시지는 나오지 않도록 */
+
     do {
-        random = Math.floor(Math.random() * messages.length);
-    } while (random === previous);
+
+        random =
+            Math.floor(
+                Math.random()
+                * messages.length
+            );
+
+    }
+    while (
+        random === previous
+        &&
+        messages.length > 1
+    );
+
 
     previous = random;
 
-    document.getElementById("message").innerText = messages[random];
+    count++;
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    /* 애니메이션 초기화 */
+
+    message.classList.remove(
+        "message-animation"
+    );
+
+
+    void message.offsetWidth;
+
+
+    message.innerText =
+        messages[random];
+
+
+    message.classList.add(
+        "message-animation"
+    );
+
+
+    updateCounter();
+
 }
 
-function showLove() {
 
-    const random =
-        Math.floor(Math.random() * messages.length);
+/* =========================
+   클릭 횟수
+========================= */
 
-    document.getElementById("message").innerText =
-        messages[random];
+function updateCounter() {
+
+    const counter =
+        document.getElementById(
+            "counter"
+        );
+
+
+    if (count === 1) {
+
+        counter.innerText =
+            "오늘 첫 번째 마음 💗";
+
+    }
+
+    else if (count < 5) {
+
+        counter.innerText =
+            `실라에게 ${count}번째 마음 전달 중 ♡`;
+
+    }
+
+    else if (count < 10) {
+
+        counter.innerText =
+            `벌써 ${count}번이나 눌렀네요 😊`;
+
+    }
+
+    else {
+
+        counter.innerText =
+            `💗 사랑의 마음 ${count}개 전달 완료`;
+
+    }
+
 }
 
 </script>
